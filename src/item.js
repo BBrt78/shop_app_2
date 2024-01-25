@@ -17,7 +17,6 @@ export function Item({id, productName, productImg, productPrice, productDescript
     };
 
     function addToCart() {
-        console.log("cartlist przy dodawaniu item", cartList)
         const itemIndex = cartList.findIndex(item => item.id === id);
 
         if (itemIndex !== -1) {
@@ -33,10 +32,10 @@ export function Item({id, productName, productImg, productPrice, productDescript
             setCartList([...cartList, {id, idCart, sameItemQ, cartItemPriceF: productPrice, productName, productImg, productPrice, productDescription}]);
             setIdCart(idCart + 1);
             setCartItemPriceF(productPrice);
+            console.log(cartList)
         }
     };
     
-    // console.log(cartList)
     return (
             <div className="item" >      
                 <img src={require(`./img/${productImg}`)} 

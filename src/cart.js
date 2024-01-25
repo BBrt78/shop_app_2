@@ -11,17 +11,17 @@ export function Cart() {
     const {cartItemPriceF, setCartItemPriceF} = useContext(CartContext);
 
 const deleteAll = () => {
-    //localStorage.removeItem("cartList");
-    setCartList([]);
+    localStorage.removeItem("cartList")
     setCartList([]);
     setIdCart(1);
     setCartItemPriceF(0)
     setSameItemQ(1)
 };
-console.log("sameItemQ", sameItemQ, cartList)
+    console.log(cartList)
+
 const deleteThis = (idCart) => {
     setCartList(prevCartList => prevCartList.filter(item => item.idCart !== idCart));
-    localStorage.removeItem(`cartList.${idCart}`);
+    localStorage.setItem(`cartList.${idCart}`, JSON.stringify([]));
 };
 
 const changeSameItemQ = (sign, item) => {
@@ -36,18 +36,18 @@ const changeSameItemQ = (sign, item) => {
         }
         const newCartList = cartList.map(cartItem => {
             if (cartItem.idCart === item.idCart){
-                setCartItemPriceF(item.sameItemQ * item.productPrice);
-                return {...cartItem, sameItemQ: newSameItemQ}
-            } else {
-                return cartItem;
+                    setCartItemPriceF(newSameItemQ * item.productPrice);
+                    return {...cartItem, sameItemQ: newSameItemQ}
+                } else {
+                    return cartItem;
+                }
             }
-        })
+        )
         setCartList(newCartList);
     }
 }
 
-    //console.log("cartList",cartList, "pricef", cartItemPriceF)
-    //console.log(localStorage)
+
     return (
         <div className="contCart">
             <Navbar />
@@ -62,7 +62,8 @@ const changeSameItemQ = (sign, item) => {
                         <div className="imgDiv"><img className="cartImg" src={require(`./img/${item.productImg}`)} alt="img" /></div>
                         <div className="cartItemName">{item.productName}</div>
                         <div className="cartItemPrice">Za sztukę: {item.productPrice} zł</div>
-                        <div className="cartItemPriceF">Razem: {item.sameItemQ === 1 ? item.productPrice : item.cartItemPriceF} zł</div>
+                        <div className="cartItemPriceF">Razem: {cartItemPriceF} zł</div>
+                        {/* <div className="cartItemPriceF">Razem: {item.sameItemQ === 1 ? item.productPrice : item.cartItemPriceF} zł</div> */}
                         <div className="cartItemQ">
                             <span className="cartMinus" onClick={() => {changeSameItemQ("-", item)}}>-</span>
                             <span className="itemQNo">{item.sameItemQ}</span>
