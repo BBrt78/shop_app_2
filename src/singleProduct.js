@@ -8,29 +8,25 @@ import {CartContext} from "./cartProvider.js";
 export function SingleProduct() {
     const {productId} = useParams();
     const singleProduct = List.find(product => product.id === parseInt(productId));
-    const {id, productName, productPrice, productImg, productDescription, productSpecs} = singleProduct;
+    const {id, productName, productPrice, productPriceFull, quantity, productImg, productDescription, productSpecs} = singleProduct;
     let fullDate = "";
     const [input, setInput] = useState("");
     const [name, setName] = useState("");
     const {cartList, setCartList} = useContext(CartContext);
-    const [idCart, setIdCart] = useState(1);
-    const {sameItemQ, setSameItemQ} = useContext(CartContext);
-    const {cartItemPriceF, setCartItemPriceF} = useContext(CartContext);
+    //const [idCart, setIdCart] = useState(1);
     
     function addToCart() {
         const itemIndex = cartList.findIndex(item => item.id === id);
         if (itemIndex !== -1) {
             const newCartList = [...cartList];
-            newCartList[itemIndex] = {...newCartList[itemIndex], 
-                sameItemQ: newCartList[itemIndex].sameItemQ + 1,
-                cartItemPriceF: (newCartList[itemIndex].sameItemQ + 1) * newCartList[itemIndex].productPrice
+            newCartList[itemIndex] = {...newCartList[itemIndex],
+                quantity: cartList[itemIndex].quantity + 1,
+                productPriceFull: newCartList[itemIndex].productPrice * (cartList[itemIndex].quantity + 1)
             };
-            setCartItemPriceF((newCartList[itemIndex].sameItemQ) * newCartList[itemIndex].productPrice);
             setCartList(newCartList);
         } else {
-            setCartList([...cartList, {id, idCart, sameItemQ, cartItemPriceF: productPrice, productName, productImg, productPrice, productDescription}]);
-            setIdCart(idCart + 1);
-            setCartItemPriceF(productPrice);
+            setCartList([...cartList, {id, productName, productPrice, productPriceFull, quantity, productImg}]);
+            //setIdCart(idCart + 1);
         }
     };
 

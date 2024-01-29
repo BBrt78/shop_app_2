@@ -5,11 +5,9 @@ export const CartContext = createContext();
 export function CartProvider({children}) {
     const initialState = JSON.parse(localStorage.getItem("cartList")) || [];
     const [cartList, setCartList] = useState(initialState);
-    const [idCart, setIdCart] = useState(1);
-    const [sameItemQ, setSameItemQ] = useState(1);
+    // const [idCart, setIdCart] = useState(1);
     const [cartListL, setCartListL] = useState(0);
-    const [cartItemPriceF, setCartItemPriceF] = useState(0);
-
+    
     useEffect(() => {
         localStorage.setItem("cartList", JSON.stringify(cartList))
     }, [cartList])
@@ -17,13 +15,10 @@ export function CartProvider({children}) {
     return (
         <CartContext.Provider value={{
             cartList, setCartList, 
-            idCart, setIdCart, 
-            sameItemQ, setSameItemQ, 
+            //idCart, setIdCart,
             cartListL, setCartListL, 
-            cartItemPriceF, setCartItemPriceF
             }}>
             {children}
         </CartContext.Provider>
     )
-
 };

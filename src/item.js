@@ -1,38 +1,29 @@
 import './App.css';
 import React, {useState, useContext} from "react";
 import {Route, Routes, Link, useNavigate} from "react-router-dom";
-// import {List} from "./list.js";
-// import {SingleProduct} from "./singleProduct";
 import {CartContext} from "./cartProvider.js";
 
-export function Item({id, productName, productImg, productPrice, productDescription}) {
+export function Item({id, productName, productImg, productPrice, productPriceFull, quantity, productDescription}) {
     const navigate = useNavigate();
     const {cartList, setCartList} = useContext(CartContext);
-    const {idCart, setIdCart} = useContext(CartContext);
-    const {sameItemQ, setSameItemQ} = useContext(CartContext);
-    const {cartItemPriceF, setCartItemPriceF} = useContext(CartContext);
-
+    //const {idCart, setIdCart} = useContext(CartContext);
+    
     function showSingle() {
         navigate(`/products/${id}`);
     };
 
     function addToCart() {
         const itemIndex = cartList.findIndex(item => item.id === id);
-
         if (itemIndex !== -1) {
             const newCartList = [...cartList];
             newCartList[itemIndex] = {...newCartList[itemIndex],
-                sameItemQ: newCartList[itemIndex].sameItemQ + 1,
-                cartItemPriceF: (newCartList[itemIndex].sameItemQ + 1) * newCartList[itemIndex].productPrice
+                quantity: cartList[itemIndex].quantity + 1,
+                productPriceFull: newCartList[itemIndex].productPrice * (cartList[itemIndex].quantity + 1)
             };
-            setSameItemQ(newCartList[itemIndex].sameItemQ)
-            setCartItemPriceF((newCartList[itemIndex].sameItemQ) * newCartList[itemIndex].productPrice);
             setCartList(newCartList);
         } else {
-            setCartList([...cartList, {id, idCart, sameItemQ, cartItemPriceF: productPrice, productName, productImg, productPrice, productDescription}]);
-            setIdCart(idCart + 1);
-            setCartItemPriceF(productPrice);
-            console.log(cartList)
+            setCartList([...cartList, {id, productName, productPrice, productPriceFull, quantity, productImg}]);
+            //setIdCart(idCart + 1);
         }
     };
     

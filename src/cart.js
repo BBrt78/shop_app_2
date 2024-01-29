@@ -6,70 +6,62 @@ import {List} from "./list.js";
 
 export function Cart() {
     const {cartList, setCartList} = useContext(CartContext);
-    const {idCart, setIdCart} = useContext(CartContext);
-    const {sameItemQ, setSameItemQ} = useContext(CartContext);
-    const {cartItemPriceF, setCartItemPriceF} = useContext(CartContext);
+    const [cartPrice, setCartPrice] = useState;
 
-const deleteAll = () => {
-    localStorage.removeItem("cartList")
-    setCartList([]);
-    setIdCart(1);
-    setCartItemPriceF(0)
-    setSameItemQ(1)
-};
-    console.log(cartList)
+    const deleteAll = () => {
+        localStorage.removeItem("cartList")
+        setCartList([]);
+        // setIdCart(1);
+    };
 
-const deleteThis = (idCart) => {
-    setCartList(prevCartList => prevCartList.filter(item => item.idCart !== idCart));
-    localStorage.setItem(`cartList.${idCart}`, JSON.stringify([]));
-};
+    const deleteThis = (id) => {
+        setCartList(prevCartList => prevCartList.filter(item => item.id !== id));
+        localStorage.setItem(`cartList.${id}`, JSON.stringify([]));
+    };
 
-const changeSameItemQ = (sign, item) => {
-    if ((sign === "-" && item.sameItemQ > 1) || (sign === "+" && item.sameItemQ > 0)) {
-        let newSameItemQ;
-        if (sign === "-") {
-            newSameItemQ = item.sameItemQ - 1;
-            setSameItemQ(item.sameItemQ - 1);
-        } else if (sign === "+") {
-            newSameItemQ = item.sameItemQ + 1;
-            setSameItemQ(item.sameItemQ + 1);
-        }
-        const newCartList = cartList.map(cartItem => {
-            if (cartItem.idCart === item.idCart){
-                    setCartItemPriceF(newSameItemQ * item.productPrice);
-                    return {...cartItem, sameItemQ: newSameItemQ}
-                } else {
-                    return cartItem;
-                }
+    const changeQuantity = (sign, item) => {
+        if ((sign === "-" && item.quantity > 1) || (sign === "+" && item.quantity > 0)) {
+            let newQuantity;
+            if (sign === "-") {
+                newQuantity = item.quantity - 1;
+            } else if (sign === "+") {
+                newQuantity = item.quantity + 1;
             }
-        )
-        setCartList(newCartList);
-    }
-}
+            const newCartList = cartList.map(cartItem => {
+                if (cartItem.id === item.id){
+                        return {...cartItem, 
+                                quantity: newQuantity,
+                                productPriceFull: newQuantity * item.productPrice}
+                    } else {
+                        return cartItem;
+                    }})
+            setCartList(newCartList);
+        }}
 
+        setCartPrice(cartList.reduce())
 
     return (
         <div className="contCart">
             <Navbar />
-            <span className="polecamy">{cartList.length !== 0 ? 
+            <div className="cartText">{cartList.length !== 0 ? 
                 <span>Twój koszyk:</span> 
                 : 
                 <span>Twój koszyk jest pusty</span>}
-            </span>
+            </div>
+            <span className="cartPriceText">{cartPrice}</span>
             <div className="cartDiv">
                 {cartList.map(item => (
                     <div className="cartItem" key={item.idCart}>
                         <div className="imgDiv"><img className="cartImg" src={require(`./img/${item.productImg}`)} alt="img" /></div>
                         <div className="cartItemName">{item.productName}</div>
                         <div className="cartItemPrice">Za sztukę: {item.productPrice} zł</div>
-                        <div className="cartItemPriceF">Razem: {cartItemPriceF} zł</div>
-                        {/* <div className="cartItemPriceF">Razem: {item.sameItemQ === 1 ? item.productPrice : item.cartItemPriceF} zł</div> */}
+                        <div className="fullPrice">Razem: {item.productPriceFull} zł</div>
                         <div className="cartItemQ">
-                            <span className="cartMinus" onClick={() => {changeSameItemQ("-", item)}}>-</span>
-                            <span className="itemQNo">{item.sameItemQ}</span>
-                            <span className="cartPlus" onClick={() => {changeSameItemQ("+", item)}}>+</span>
+                            <span className="cartMinus" onClick={() => {changeQuantity("-", item)}}>-</span>
+                            <span className="itemQNo">{item.quantity}</span>
+                            <span className="cartPlus" onClick={() => {changeQuantity("+", item)}}>+</span>
                         </div>
-                        <div className="deleteThis" onClick={() => {deleteThis(item.idCart)}}>Usuń</div>
+                        <div className="deleteThis" onClick={() => {deleteThis(item.id)}}>Usuń</div>
                     </div>
                 ))}
             </div>

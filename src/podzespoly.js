@@ -17,9 +17,13 @@ export function Podzespoly() {
                         id={item.id}
                         key={item.id} 
                         productName={item.productName}
-                        productImg={item.productImg}
+                        category={item.category}
                         productPrice={item.productPrice}
-                        productDescription={item.productDescription} />
+                        productPriceFull={item.productPriceFull}
+                        quantity={item.quantity}
+                        productImg={item.productImg}
+                        productDescription={item.productDescription}
+                        productSpecs={item.productSpecs} />
                 ))}
             </div>
         </div>

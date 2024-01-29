@@ -4,6 +4,8 @@ export const List = [
         productName:"Dysk twardy Seagate",
         category:"podzespol",
         productPrice:300,
+        productPriceFull:300,
+        quantity:1,
         productImg:"dysk1.jpg",
         productDescription:"Samsung NVMe SSD 980 to pierwszy tak dostępny dla konsumentów dysk firmy Samsung bez pamięci DRAM."+ 
                             "Konstrukcja zapewnia wyjątkową wydajność oraz nawet 6 razy większe prędkości, od tych oferowanych "+
@@ -19,6 +21,8 @@ export const List = [
         productName:"Karta graficzna",
         category:"podzespol",
         productPrice:1000,
+        productPriceFull:1000,
+        quantity:1,
         productImg:"kartagraficzna.jpg",
         productDescription:"Karta graficzna ASRock Radeon RX 6600 Challenger D 8GB z przełomową architekturą AMD RDNA 2. "+
                             "seria AMD Radeon RX 6600, została zaprojektowana z myślą o zapewnieniu niesamowitych wrażeń w grach "+
@@ -35,6 +39,8 @@ export const List = [
         productName:"Procesor Intel Core i5",
         category:"podzespol",
         productPrice:1500,
+        productPriceFull:1500,
+        quantity:1,
         productImg:"procesor.jpg",
         productDescription:"Korzystaj z procesorów Intel stworzonych dla gamingu nowej generacji, takich jak wyposażony w 6 rdzeni i "+
                             "12 wątków Intel Core i5-12400F. Zapewnia on rewolucyjną wydajność dzięki wysokiemu taktowaniu do nawet 4,4 GHz.",
@@ -49,6 +55,8 @@ export const List = [
         productName:"Laptop Dell",
         category:"laptop",
         productPrice:5000,
+        productPriceFull:5000,
+        quantity:1,
         productImg:"laptop1.jpg",
         productDescription:"Doskonałe wrażenia wizualne zapewnia ekran z funkcją Dell Comfort View, a niezawodność działania procesor "+ 
                             "AMD Ryzen 5 5500U. To dobry wybór zarówno do pracy, jak i do nauki.",
@@ -64,6 +72,8 @@ export const List = [
         productName:"Laptop Samsung",
         category:"laptop",
         productPrice:6000,
+        productPriceFull:6000,
+        quantity:1,
         productImg:"laptop2.jpg",
         productDescription:"Nowy Notebook Samsung serii 9 to niewiarygodne połączenie lekkości, perfekcyjnego wykonania i niebywałych "+ 
                             "osiągów! Najnowszy procesor trzeciej generacji - dwurdzeniowy Intel® Core™ i7 - zapewnia niezwykle sprawne "+
@@ -79,6 +89,8 @@ export const List = [
         productName:"Laptop HP",
         category:"laptop",
         productPrice:4000,
+        productPriceFull:4000,
+        quantity:1,
         productImg:"laptop3.jpg",
         productDescription:"Mimo niewielkich gabarytów HP 15s budzi podziw solidną konstrukcją i jakością wykonania. Z powodzeniem "+
                             "wykorzystasz go zarówno do pracy w domu, jak i poza nim.",
@@ -93,6 +105,8 @@ export const List = [
         productName:"Smartfon Motorola",
         category:"smartfon",
         productPrice:4000,
+        productPriceFull:4000,
+        quantity:1,
         productImg:"smartfon1.jpg",
         productDescription:"Nowy smartfon motorola edge 40 neo został wyposażony w ochronę klasy IP68, która zapewnia mu odporność podczas "+ 
                             "zanurzenia w wodzie. Ciesz się zaawansowanym aparatem 50 Mpx z technologią Ultra Pixel.",
@@ -108,6 +122,8 @@ export const List = [
         productName:"Smartfon Samsung",
         category:"smartfon",
         productPrice:2000,
+        productPriceFull:2000,
+        quantity:1,
         productImg:"smartfon2.jpg",
         productDescription:"Zobacz, jak piękny i elegancki jest Samsung Galaxy S22. Smartfon cechuje odporność na wodę "+
                              "i kurz oraz wzmocniona konstrukcja. Dzięki wydajnemu procesorowi i pojemnej baterii możesz spędzić wiele "+
@@ -123,6 +139,8 @@ export const List = [
         productName:"Smartfon Xiaomi",
         category:"smartfon",
         productPrice:3000,
+        productPriceFull:3000,
+        quantity:1,
         productImg:"smartfon3.jpg",
         productDescription:"To koniec kompromisów. Nowy Xiaomi 13 wchodzi z buta na rynek smartfonów. Co może Ci zaoferować? "+ 
                             "Przede wszystkim topowe podzespoły, które zagwarantują Ci maksimum satysfakcji z zakupu.",
@@ -137,6 +155,8 @@ export const List = [
         productName:"Smartwatch Samsung",
         category:"smartwatch",
         productPrice:2000,
+        productPriceFull:2000,
+        quantity:1,
         productImg:"smartwatch1.jpg",
         productDescription:"Nowy Galaxy Watch5 Pro to połączenie kultowego i klasycznego designu smartwatchy Galaxy oraz dopasowania "+ 
                             "do nawet najbardziej ekstremalnych wyzwań. Skorzystaj z dodatkowych możliwości personalizacji, wybierając "+ 
@@ -153,6 +173,8 @@ export const List = [
         productName:"Smartwatch Xiaomi",
         category:"smartwatch",
         productPrice:500,
+        productPriceFull:500,
+        quantity:1,
         productImg:"smartwatch2.jpg",
         productDescription:"Xiaomi Mi Watch niebieski wyposażono w wodoszczelność na poziomie 5 ATM, dzięki temu niekorzystne warunki "+
                            "pogodowe nie są mu straszne. Włóż smartwatch na rękę, a zobaczysz, że jego wygląd nie raz sprawi, "+ 
@@ -168,6 +190,8 @@ export const List = [
         productName:"Smartwatch Garmin",
         category:"smartwatch",
         productPrice:2500,
+        productPriceFull:2500,
+        quantity:1,
         productImg:"smartwatch3.jpg",
         productDescription:"Sport to zdrowie, a Ty chcesz mieć je pod kontrolą? Wybierz Garmin Venu 2S szary, "+ 
                             "który zbiera statystyki z Twojej aktywności, a do tego informuje Cię o Twoim tętnie. "+
